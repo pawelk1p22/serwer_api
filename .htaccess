@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+
+# Redirect all requests to /public/index.php
+RewriteRule ^$ /public/index.php [L]
+RewriteRule (.*) /public/$1 [L]
+
+# Handle any URL that does not directly match a file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /public/index.php [QSA,L]

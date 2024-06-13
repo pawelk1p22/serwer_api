@@ -14,7 +14,13 @@ class ApiController extends Controller
     {
         $rules = [
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|max:255',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'max:255',
+                'regex:/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+            ],
             'first_name' => 'nullable|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'nick' => 'nullable|string|max:255',
